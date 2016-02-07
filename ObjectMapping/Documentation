@@ -1,0 +1,34 @@
+
+The module implements classes & functions to map objects in an image.
+
+- ObjectMapping.py
+
+    INPUTS:
+    - An image representing a frame of a video.
+
+    INTERMEDIATE PROCESS:
+    - The image is scaled to 400 by 400 pixels.
+    - Relevant objects are mapped.
+    - 4 lists are populated. First list contains starting x-cordingates of each rectangle
+        around mapped objects. Second list contains y-cordinates of each rectangle. Third
+        list contains widths of rectangles formed around each mapped object. Fourth list
+        contains heights of rectangles formed around each mapped object.
+
+    FUNCTIONS:
+
+        map0bjects():
+            Inputs: None
+            Outputs: None
+            Process: Populates 4 lists containing information about rectangles and calculates
+                    value of 'n'. Main function that runs the algorithm responsible for
+                    detecting objects.
+
+        getNumberOfObjects():
+            Inputs: None
+            Outputs: Number of Objects identified in image
+            Process: None
+
+        getObjects:
+            Inputs: None
+            Outputs: 4 lists containing information about rectangles.
+            Process: None
