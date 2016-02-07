@@ -29,34 +29,34 @@ class ObjectClassification:
         pass
 
     def ClassifyAllObjects(self):
-        objects = [classifyObject(self.startingPosY[x], self.startingPosY[i], self.widths[i],
-                                  self.heights[i]) for i in range(1,n)]
+        objects = [self.classifyObject(self.startingPosY[i], self.startingPosY[i], self.widths[i],
+                                  self.heights[i]) for i in range(1,self.n)]
 
     def classifyObject(self, PosX, PosY, width, height):
 
-        if objectIsHuman():
+        if self.objectIsHuman():
             return self.LABEL_HUMANS
 
-        if objectIsAnimal():
+        if self.objectIsAnimal():
             return self.LABEL_ANIMALS
 
-        if objectIsThing():
+        if self.objectIsThing():
             return self.LABEL_THINGS
 
     def objectIsHuman(self):
 
         # TO DO:  RUN MACHINE LEARNING ALGORITHM AGAINST HUMANS
-        return boolean
+        return True
 
     def objectIsAnimal(self):
 
         # TO DO:  RUN MACHINE LEARNING ALGORITHM AGAINST ANIMALS
-        return boolean
+        return True
 
     def objectIsThing(self):
 
         # TO DO:  RUN MACHINE LEARNING ALGORITHM AGAINST THINGS
-        return boolean
+        return True
 
     def getObjects(self):
         return self.objects

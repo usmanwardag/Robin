@@ -1,6 +1,11 @@
+
+import numpy as np
+import cv2 as cv
+
+
 class ObjectMapping:
 
-    n = 0;
+    n = 0
     # Starting 'x' positions of rectangles around mapped objects
     startingPosX = []
     # Starting 'y' positions of rectangles around mapped objects
@@ -20,7 +25,8 @@ class ObjectMapping:
     def mapObjects(self):
 
         # Resize the image to 400*400 pixels
-        resizeImage(self.image, 400, 400)
+
+        self.resizeImage(self.image, 400, 400)
 
         # TO DO: Implement algorithm to calculate objects
 
@@ -29,10 +35,10 @@ class ObjectMapping:
         pass
 
     def getNumberOfObjects(self):
-        return n
+        return self.n
 
     def getObjects(self):
-        return startingPosX, startingPosY, widths, heights
+        return self.startingPosX, self.startingPosY, self.widths, self.heights
 
 
 
