@@ -14,6 +14,7 @@ class VideoCapture:
 
     def captureVideo(self):
         path = os.getcwd()+"\..\Data\ideo1.avi"
+        # If reading from camera, set path to 0.
         self.video = cv2.VideoCapture(path)
 
     def readFrames(self):
