@@ -6,15 +6,14 @@ import ObjectMapping
 
 
 def main():
-    path = os.getcwd()+"\..\Data\image02.jpg"
+    path = os.getcwd()+"\..\Data\image05.jpg"
     image = plt.imread(path)
 
     #plt.imshow(image)
     #plt.show()
 
     objectMapping = ObjectMapping.ObjectMapping(image)
-    objectMapping.removeBackground()
-
+    objectMapping.binarizeImage()
     #objectMapping.mapObjects()
 
 

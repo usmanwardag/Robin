@@ -32,3 +32,12 @@ The module implements classes & functions to map objects in an image.
             Inputs: None
             Outputs: 4 lists containing information about rectangles.
             Process: None
+
+
+    ALGORITHMS:
+    - In order to precisely separate objects:
+        - First, get a rough rectangle around an object.
+        [TO DO: FIGURE OUT THE ALGORITHM FOR THIS]
+
+        - Then, using the algorithm specified here, we can extract that object from the background.
+        http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_grabcut/py_grabcut.html

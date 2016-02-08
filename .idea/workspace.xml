@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="347361bd-b4d4-4892-817f-a6cdb2e2f6fe" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataPreparation/VideoCapture.py" afterPath="$PROJECT_DIR$/DataPreparation/VideoCapture.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UsefulOperations/UsefulOperations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ObjectMapping/Documentation" afterPath="$PROJECT_DIR$/ObjectMapping/Documentation" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ObjectMapping/ObjectMapping.py" afterPath="$PROJECT_DIR$/ObjectMapping/ObjectMapping.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ObjectMapping/main.py" afterPath="$PROJECT_DIR$/ObjectMapping/main.py" />
     </list>
     <ignored path="Robin.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/ObjectMapping/main.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+              <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -38,8 +42,8 @@
       <file leaf-file-name="ObjectMapping.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ObjectMapping/ObjectMapping.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="0" selection-start-line="18" selection-start-column="4" selection-end-line="20" selection-end-column="0" />
+            <state vertical-scroll-proportion="-10.379311">
+              <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
               <folding>
                 <element signature="e#1#19#0" expanded="true" />
               </folding>
@@ -47,14 +51,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoCapture.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataPreparation/VideoCapture.py">
+      <file leaf-file-name="Documentation" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ObjectMapping/Documentation">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6834171">
-              <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-              <folding>
-                <element signature="e#1#10#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.78643215">
+              <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,14 +82,15 @@
       <list>
         <option value="$PROJECT_DIR$/un.py" />
         <option value="$PROJECT_DIR$/Environment.py" />
-        <option value="$PROJECT_DIR$/ObjectMapping/Documentation" />
         <option value="$PROJECT_DIR$/DataPreparation/DOCUMENTATION" />
         <option value="$PROJECT_DIR$/ObjectClassification/Documentation" />
         <option value="$PROJECT_DIR$/ObjectSeparation/main.py" />
         <option value="$PROJECT_DIR$/ObjectClassification/ObjectClassification.py" />
-        <option value="$PROJECT_DIR$/ObjectMapping/main.py" />
-        <option value="$PROJECT_DIR$/ObjectMapping/ObjectMapping.py" />
         <option value="$PROJECT_DIR$/DataPreparation/VideoCapture.py" />
+        <option value="$PROJECT_DIR$/ObjectMapping/ObjectMapping.py" />
+        <option value="$PROJECT_DIR$/ObjectMapping/main.py" />
+        <option value="$PROJECT_DIR$/ObjectMapping/Documentation" />
+        <option value="$PROJECT_DIR$/UsefulOperations/UsefulOperations" />
       </list>
     </option>
   </component>
@@ -156,6 +159,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Robin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Robin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Robin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UsefulOperations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -438,6 +455,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="2" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -521,13 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ObjectMapping/Documentation">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="33" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataPreparation/DOCUMENTATION">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.028052805">
@@ -549,10 +560,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DataPreparation/VideoCapture.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3812825">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="20" />
+          <folding>
+            <element signature="e#1#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ObjectMapping/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
@@ -561,21 +582,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ObjectMapping/ObjectMapping.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="0" selection-start-line="18" selection-start-column="4" selection-end-line="20" selection-end-column="0" />
+        <state vertical-scroll-proportion="-10.379311">
+          <caret line="39" column="44" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
           <folding>
             <element signature="e#1#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataPreparation/VideoCapture.py">
+    <entry file="file://$PROJECT_DIR$/UsefulOperations/UsefulOperations">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6834171">
-          <caret line="16" column="48" selection-start-line="16" selection-start-column="48" selection-end-line="16" selection-end-column="48" />
-          <folding>
-            <element signature="e#1#10#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.5125628">
+          <caret line="12" column="68" selection-start-line="12" selection-start-column="68" selection-end-line="12" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ObjectMapping/Documentation">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.78643215">
+          <caret line="39" column="50" selection-start-line="39" selection-start-column="50" selection-end-line="39" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -35,6 +35,13 @@ class ObjectMapping:
         # TO DO: Populate lists
         pass
 
+    def binarizeImage(self):
+        gray = cv2.cvtColor(self.image,cv2.COLOR_BGR2GRAY)
+        ret, thresh = cv2.threshold(gray,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
+
+        plt.imshow(thresh)
+        plt.show()
+
     def getNumberOfObjects(self):
         return self.n
 
