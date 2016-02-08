@@ -9,8 +9,13 @@ def main():
     path = os.getcwd()+"\..\Data\image02.jpg"
     image = plt.imread(path)
 
+    #plt.imshow(image)
+    #plt.show()
+
     objectMapping = ObjectMapping.ObjectMapping(image)
-    objectMapping.mapObjects()
+    objectMapping.removeBackground()
+
+    #objectMapping.mapObjects()
 
 
 if __name__ == '__main__':

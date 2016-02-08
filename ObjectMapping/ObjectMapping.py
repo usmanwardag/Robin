@@ -1,7 +1,8 @@
 
 import numpy as np
-import cv2 as cv
-
+import cv2
+import os
+from matplotlib import pyplot as plt
 
 class ObjectMapping:
 
@@ -39,9 +40,4 @@ class ObjectMapping:
 
     def getObjects(self):
         return self.startingPosX, self.startingPosY, self.widths, self.heights
-
-
-
-
-
 
