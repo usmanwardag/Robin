@@ -14,14 +14,16 @@ def main():
              for i in range(1,len(images))]
     referenceImages = [plt.imread(path) for path in paths]
 
-    originalImagePath = os.getcwd()+"\..\Data\personInRoom.jpg"
+    originalImagePath = os.getcwd()+"\..\Data\personInRoom04.jpg"
     originalImage = plt.imread(originalImagePath)
 
     #plt.imshow(image)
     #plt.show()
 
     objectMapping = ObjectMapping.ObjectMapping(originalImage)
-    objectMapping.matchReferenceObjects(referenceImages)
+    objectMapping.pedestrainDetection()
+
+    #objectMapping.matchReferenceObjects(referenceImages)
     #objectMapping.mapObjects()
 
 
