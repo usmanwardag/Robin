@@ -1,6 +1,7 @@
 
 import numpy as np
 import cv2
+
 import os
 from matplotlib import pyplot as plt
 
@@ -29,11 +30,42 @@ class ObjectMapping:
 
         self.resizeImage(self.image, 400, 400)
 
-        # TO DO: Implement algorithm to calculate objects
+        # TO DO: Implement algorithm to find objects
 
         # TO DO: Set n
         # TO DO: Populate lists
         pass
+
+    def matchReferenceObjects(self,refImages):
+
+        results = [self.surfDescriptorsMatching(refImage) for refImage in refImages]
+        print results
+
+    def surfDescriptorsMatching(self,refImage,threshold=2):
+
+        surf = cv2.SURF(1)
+
+        #Find descriptors for self.image
+        kp1, des1 = surf.detectAndCompute(self.image, None)
+        kp2, des2 = surf.detectAndCompute(refImage, None)
+
+        # Create and initiate matcher object
+        matcher = cv2.BFMatcher()
+        matches = matcher.knnMatch(des1,des2,k=2)
+
+        # Apply test
+        good = []
+        for m,n in matches:
+            if m.distance < 0.50*n.distance:
+                good.append([m])
+
+        # Draw matches
+        print len(good)
+
+        if len(good) >= threshold:
+            return True
+        else:
+            return False
 
     def binarizeImage(self):
         gray = cv2.cvtColor(self.image,cv2.COLOR_BGR2GRAY)

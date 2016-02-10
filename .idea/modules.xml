@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Python/Python-git/.idea/Python-git.iml" filepath="$PROJECT_DIR$/../Python/Python-git/.idea/Python-git.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Robin.iml" filepath="$PROJECT_DIR$/.idea/Robin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Communication Networks/TCP/.idea/TCP.iml" filepath="$PROJECT_DIR$/../Communication Networks/TCP/.idea/TCP.iml" />
     </modules>
   </component>
 </project>
