@@ -1,5 +1,6 @@
 from matplotlib import pyplot as plt
 
+import cv2
 import os
 import numpy as np
 import ObjectMapping
@@ -12,20 +13,13 @@ def main():
               '11','12','13','14','15']
     paths = [os.getcwd()+"\..\Data\person"+images[i]+".jpg"
              for i in range(1,len(images))]
-    referenceImages = [plt.imread(path) for path in paths]
+    #referenceImages = [plt.imread(path) for path in paths]
 
-    originalImagePath = os.getcwd()+"\..\Data\personInRoom04.jpg"
+    originalImagePath = os.getcwd()+"\..\Data\personInRoom07.jpg"
     originalImage = plt.imread(originalImagePath)
 
-    #plt.imshow(image)
-    #plt.show()
-
     objectMapping = ObjectMapping.ObjectMapping(originalImage)
-    objectMapping.pedestrainDetection()
-
-    #objectMapping.matchReferenceObjects(referenceImages)
-    #objectMapping.mapObjects()
-
+    objectMapping.mapObjects()
 
 if __name__ == '__main__':
 	main()
