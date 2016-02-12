@@ -18,7 +18,7 @@ The module implements classes & functions to map objects in an image.
 
         map0bjects():
             Inputs: None
-            Outputs: None
+            Outputs: 4 lists containing information about rectangles.
             Process: Populates 4 lists containing information about rectangles and calculates
                     value of 'n'. Main function that runs the algorithm responsible for
                     detecting objects.
@@ -34,10 +34,11 @@ The module implements classes & functions to map objects in an image.
             Process: None
 
 
-    ALGORITHMS:
-    - In order to precisely separate objects:
-        - First, get a rough rectangle around an object.
-        [TO DO: FIGURE OUT THE ALGORITHM FOR THIS]
+    ALGORITHM:
+    - First we develop SURF descriptors which are indicative of the places where there are objects. A threshold
+    of 300 gave nice results.
 
-        - Then, using the algorithm specified here, we can extract that object from the background.
-        http://opencv-python-tutroals.readthedocs.org/en/latest/py_tutorials/py_imgproc/py_grabcut/py_grabcut.html
+    - Then we perform clustering on surf points to get distinct objects. The problem is to decide about
+    the number of clusters. This is done by calculating a parameter inertia. Inertia increases by decreasing
+    number of clusters. So, initially, inertia is set to 0 and clusters to 10. Then, number of clusters is
+    decreased until inertia is greater than 200. Experimentally, this gave a nice fit of objects.
