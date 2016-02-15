@@ -1,8 +1,8 @@
 # Robin
-Robin is a programming language that can extract information from videos and stores it in JSON string format.
+Robin is a programming language that can extract information from videos and store it in JSON string format.
 
 ### Why Robin?
-Robots are capturing more information than ever. Particularly, new sensors are designed with integrated cameras that continously capture video of their environments. This means that there is a need to process that information in a way that takes a very little storage, but at the same time, retains the crux of that information. Robin is, therefore, designed to process video data and output JSON strings that are light and meaningful.
+Robots are capturing more information than ever. Particularly, new sensors are designed with integrated cameras that continously capture video of their environments. This means that there is a need to process that information in a way that takes very little storage, but at the same time, retains the crux of that information. Robin is, therefore, designed to process video data and output JSON strings that are light and meaningful.
 
 ### How to Use Robin?
 Robin is currently in development. Till now, we have completed the following modules:
