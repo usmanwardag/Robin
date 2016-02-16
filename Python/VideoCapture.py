@@ -4,6 +4,10 @@ import cv2
 
 from matplotlib import pyplot as plt
 
+'''
+INPUT: A VIDEO.
+OUTPUT: FRAMES FROM EACH SECOND OF VIDEO
+'''
 
 class VideoCapture:
 

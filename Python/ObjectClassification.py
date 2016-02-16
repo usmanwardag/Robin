@@ -1,4 +1,3 @@
-import cv2
 
 from matplotlib import pyplot as plt
 import numpy as np
@@ -53,16 +52,30 @@ class ObjectClassification:
 
     def matchImage(self, refImage,threshold=2):
 
-        subImages = [self.image[self.startingPosX[i]:(self.startingPosX[i]+self.widths[i]),
-        self.startingPosY[i]:(self.startingPosY[i]+self.heights[i])] for i in range(1,len(self.widths))]
+        sub_images = []
+        for i in range(1,len(self.widths)):
+            start_x = self.startingPosX[i]
+            start_y = self.startingPosY[i]
+            sub_images[i] = self.image[start_x:(start_x+1),start_y:(start_y+1)]
+
 
         #matchResults = [self.matchSURFDescriptors(subImage,refImage) for subImage in subImages]
         #print matchResults
 
-        refImage = self.resizeImage(refImage,self.widths[0]/12,(self.widths[0]/12)*(subImages[0].shape[0]/subImages[0].shape[1]))
+        #refImage = self.resizeImage(refImage,self.widths[0]/12,(self.widths[0]/12)*(subImages[0].shape[0]/subImages[0].shape[1]))
+
+        #for subImage in subImages:
+        #    self.templateMatching(subImage,refImage)
+
+        print self.startingPosX
+        print self.startingPosY
+        print self.widths
+        print self.heights
 
         for subImage in subImages:
-            self.templateMatching(subImage,refImage)
+            print subImage.shape[0],subImage.shape[1]
+            plt.imshow(subImage)
+            plt.show()
 
     def matchSURFDescriptors(self, image, refImage, threshold = 2):
 
@@ -130,6 +143,9 @@ class ObjectClassification:
             plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
             plt.suptitle(meth)
             plt.show()
+
+    def determineDistance(self):
+        pass
 
     def objectIsHuman(self):
 
