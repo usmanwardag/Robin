@@ -1,19 +1,21 @@
 
 import os
 from os import path
+import JSONFormation
 import sys
 from matplotlib import pyplot as plt
 
-sys.path.append(path.abspath('../ObjectMapping'))
-
+sys.path.insert(0, path.abspath('..'))
 
 def main():
     from ObjectMapping.ObjectMapping import ObjectMapping
-    originalImagePath = os.getcwd()+"\..\Data\personInRoom07.jpg"
-    originalImage = plt.imread(originalImagePath)
+    originalImagePath = os.getcwd()+"\..\Data\personInRoom01.jpg"
+    #originalImage = plt.imread(originalImagePath)
+    #objectMapping = ObjectMapping(originalImage)
+    #objectMapping.mapObjects()
+    #startingPosX, startingPosY, widths, heights = objectMapping.getObjects()
 
-    objectMapping = ObjectMapping(originalImage)
-    objectMapping.mapObjects()
+    JSONFormation.JSONFormation()
 
 if __name__ == '__main__':
     main()
