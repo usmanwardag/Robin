@@ -23,14 +23,6 @@ class ObjectMapping:
     def __init__(self, image):
         self.image = image
 
-        # Resize image maintaining the aspect ratio
-        r = 400.0 / image.shape[1]
-        self.image = self.resizeImage(self.image,400,int(self.image.shape[0] * r))
-
-
-    def resizeImage(self, image, xPixels, yPixels):
-        return cv2.resize(image,(xPixels,yPixels))
-
     def mapObjects(self):
 
         points = self.getSurfPoints()
@@ -123,17 +115,6 @@ class ObjectMapping:
         left_x = [int(cluster_centers[i][0] - widths[i]/2) for i in range(0,n_clusters)]
         left_y = [int(cluster_centers[i][1] - heights[i]/2) for i in range(0,n_clusters)]
 
-        # Draw Rectangles
-        for i in range(0,len(left_x)):
-            cv2.rectangle(image, (left_x[i],left_y[i]),(left_x[i]+widths[i],left_y[i]+heights[i]), (0, 255, 0), 2)
-
-        plt.show()
-
-        print "Left Points x: ", left_x
-        print "Left Points y: ", left_y
-        print "Widths ", widths
-        print "Heights: ", heights
-        print "Image width and height: ", image.shape[1],image.shape[0]
         return left_x, left_y, widths, heights
 
     def getNumberOfObjects(self):

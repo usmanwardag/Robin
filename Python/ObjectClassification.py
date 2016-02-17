@@ -1,7 +1,5 @@
 
 import cv2
-from matplotlib import pyplot as plt
-import numpy as np
 
 class ObjectClassification:
 
@@ -14,28 +12,20 @@ class ObjectClassification:
     # Number of images in each object
     n = 0
     # Starting 'x' positions of rectangles around mapped objects
-    startingPosX = []
+    start_x = []
     # Starting 'y' positions of rectangles around mapped objects
-    startingPosY = []
+    start_y = []
     # Widths of rectangles around mapped objects
     widths = []
     # Heights of rectangles around mapped objects
     heights = []
 
-    def __init__(self, image, startingPosX, startingPosY, widths, heights):
+    def __init__(self, image, start_x, start_y, widths, heights):
         self.image = image
-        self.startingPosX = startingPosX
-        self.startingPosY = startingPosY
+        self.start_x = start_x
+        self.start_y = start_y
         self.widths = widths
         self.heights = heights
-
-        # Resize image maintaining the aspect ratio
-        r = 400.0 / image.shape[1]
-        self.image = self.resizeImage(self.image,400,int(self.image.shape[0] * r))
-
-
-    def resizeImage(self, image, xPixels, yPixels):
-        return cv2.resize(image,(xPixels,yPixels))
 
     def ClassifyAllObjects(self):
         objects = [self.classifyObject(self.startingPosY[i], self.startingPosY[i], self.widths[i],
@@ -43,60 +33,42 @@ class ObjectClassification:
 
     def classifyObject(self, PosX, PosY, width, height):
 
-        if self.objectIsHuman():
-            return self.LABEL_HUMANS
+        pass
 
-        if self.objectIsAnimal():
-            return self.LABEL_ANIMALS
+    '''
+    Loops through all sub-images and detects if any sub-image matches
+    with the reference image provided by the user.
+    '''
 
-        if self.objectIsThing():
-            return self.LABEL_THINGS
+    def findImage(self, image_ref,threshold=2):
 
-    def matchImage(self, refImage,threshold=2):
+        # Note: self.image() first takes height and then width
 
         sub_images = []
         for i in range(0,len(self.widths)):
-            start_x = self.startingPosX[i]
-            start_y = self.startingPosY[i]
-            print start_x, start_x+self.widths[i]
-            print start_y, start_y+self.heights[i]
-            sub_images.append(self.image[start_x:(start_x+self.widths[i]),
-                              start_y:(start_y+self.heights[i])])
+            sub_images.append(self.image[self.start_y[i]:(self.start_y[i]+self.heights[i]),
+                              self.start_x[i]:(self.start_x[i]+self.widths[i])])
 
-        #matchResults = [self.matchSURFDescriptors(subImage,refImage) for subImage in subImages]
-        #print matchResults
+        return [self.matchSURFDescriptors(sub_image, image_ref) for sub_image in sub_images]
 
-        #refImage = self.resizeImage(refImage,self.widths[0]/12,(self.widths[0]/12)*(subImages[0].shape[0]/subImages[0].shape[1]))
+    '''
+    Matches SURF Descriptors of two images and returns a boolean
+    indicating if length of good matches exceeds threshold.
+    '''
 
-        #for subImage in subImages:
-        #    self.templateMatching(subImage,refImage)
-
-        print self.startingPosX
-        print self.startingPosY
-        print self.widths
-        print self.heights
-
-        for sub_image in sub_images:
-            print sub_image.shape[1],sub_image.shape[0]
-            plt.imshow(sub_image)
-            plt.show()
-
-    def matchSURFDescriptors(self, image, refImage, threshold = 2):
+    def matchSURFDescriptors(self, image, image_ref, threshold = 4):
 
         surf = cv2.SURF(400)
 
-        plt.imshow(image)
-        plt.show()
-
         #Find descriptors for self.image
-        kp1, des1 = surf.detectAndCompute(self.image, None)
-        kp2, des2 = surf.detectAndCompute(refImage, None)
+        kp1, des1 = surf.detectAndCompute(image, None)
+        kp2, des2 = surf.detectAndCompute(image_ref, None)
 
         # Create and initiate matcher object
         matcher = cv2.BFMatcher()
         matches = matcher.knnMatch(des1, des2, k=2)
 
-        print "Matches: ", matches
+        print "Length of Matches", len(matches)
 
         # Apply test
         good = []
@@ -111,60 +83,6 @@ class ObjectClassification:
             return True
         else:
             return False
-
-
-    def templateMatching(self,image,template):
-
-        img2 = image.copy()
-        w, h, c = template.shape
-        # All the 6 methods for comparison in a list
-        methods = ['cv2.TM_CCOEFF', 'cv2.TM_CCOEFF_NORMED',
-                   'cv2.TM_CCORR_NORMED', 'cv2.TM_SQDIFF', 'cv2.TM_SQDIFF_NORMED']
-
-        for meth in methods:
-            img = img2.copy()
-            method = eval(meth)
-            # Apply template Matching
-            res = cv2.matchTemplate(img,template,method)
-            min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
-
-            print "Locations: ",min_loc,max_loc
-
-            # If the method is TM_SQDIFF or TM_SQDIFF_NORMED, take minimum
-            if method in [cv2.TM_SQDIFF, cv2.TM_SQDIFF_NORMED]:
-                top_left = min_loc
-            else:
-                top_left = max_loc
-
-            w = -20
-            h = +20
-
-            print "Values: ", min_val, max_val
-
-            bottom_right = (top_left[0] + w, top_left[1] + h)
-            cv2.rectangle(img,top_left, bottom_right, 255, 2)
-            plt.subplot(111),plt.imshow(img,cmap = 'gray')
-            plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
-            plt.suptitle(meth)
-            plt.show()
-
-    def determineDistance(self):
-        pass
-
-    def objectIsHuman(self):
-
-        # TO DO:  RUN MACHINE LEARNING ALGORITHM AGAINST HUMANS
-        return True
-
-    def objectIsAnimal(self):
-
-        # TO DO:  RUN MACHINE LEARNING ALGORITHM AGAINST ANIMALS
-        return True
-
-    def objectIsThing(self):
-
-        # TO DO:  RUN MACHINE LEARNING ALGORITHM AGAINST THINGS
-        return True
 
     def getObjects(self):
         return self.objects
