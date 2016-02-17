@@ -7,15 +7,16 @@ import time
 import ObjectClassification as classification
 import ObjectMapping as mapping
 
+# Prevents from generating .pyc files
+sys.dont_write_bytecode = True
 
 def main():
 
     start = time.time()
     path_original = os.getcwd()+"\Data\imageMatching01.jpg"
-    path_ref = os.getcwd()+"\Data\imageMatching06.jpg"
+    path_ref = os.getcwd()+"\Data\imageMatching02.jpg"
 
     image_original = plt.imread(path_original,0)
-
 
     # Resize image maintaining the aspect ratio
     # TRADE-OFF: Increasing resolution would increase accuracy but at cost of time
@@ -24,7 +25,7 @@ def main():
     image_resized = resizeImage(image_original,400,int(image_original.shape[0] * r))
 
     image_ref = plt.imread(path_ref,0)
-    r = 300.0 / image_ref.shape[1]
+    r = 500.0 / image_ref.shape[1]
     ref_resized = resizeImage(image_ref,400,int(image_ref.shape[0] * r))
 
 
