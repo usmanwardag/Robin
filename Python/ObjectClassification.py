@@ -58,6 +58,7 @@ class ObjectClassification:
 
     def matchSURFDescriptors(self, image, image_ref, threshold = 4):
 
+        # TRADE-OFF: Threshold can be adjusted to see where we get optimum value.
         surf = cv2.SURF(400)
 
         #Find descriptors for self.image
@@ -68,8 +69,6 @@ class ObjectClassification:
         matcher = cv2.BFMatcher()
         matches = matcher.knnMatch(des1, des2, k=2)
 
-        print "Length of Matches", len(matches)
-
         # Apply test
         good = []
         for m,n in matches:
@@ -77,7 +76,7 @@ class ObjectClassification:
                 good.append([m])
 
         # Draw matches
-        print "Good Matches: ", len(good)
+        #print "Good Matches: ", len(good)
 
         if len(good) >= threshold:
             return True

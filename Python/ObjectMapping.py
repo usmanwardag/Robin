@@ -76,8 +76,8 @@ class ObjectMapping:
             if inertia < 200:
                 n_clusters = n_clusters - 1
 
-        print "Total Clusters: ", n_clusters
-        print "Final Inertia: ", inertia
+        # print "Total Clusters: ", n_clusters
+        # print "Final Inertia: ", inertia
 
         # Initialize widths and heights
         widths = []
@@ -86,30 +86,20 @@ class ObjectMapping:
         w = 100 * self.image.shape[1]/400
         h = 100 * self.image.shape[0]/400
 
-        print "Scaled width and height: ",w,h
-        print "Cluster Centers", cluster_centers
-
         for i in range(0,n_clusters):
             if (cluster_centers[i][0]+w/2) > self.image.shape[1]:
-                print (cluster_centers[i][0]+w/2)
                 widths.append(int(self.image.shape[1]-cluster_centers[i][0])*2)
-                print "Width - Case 1"
             elif (cluster_centers[i][0]-w/2) < 0:
                 widths.append(int(cluster_centers[i][0]*2))
-                print "Width - Case 2"
             else:
                 widths.append(w)
-                print "Width - Case Default"
 
             if (cluster_centers[i][1]+h/2) > self.image.shape[0]:
                 heights.append(int(self.image.shape[0]-cluster_centers[i][1])*2)
-                print "Height - Case 1"
             elif (cluster_centers[i][1]-h/2) < 0:
                 heights.append(int(cluster_centers[i][1]*2))
-                print "Height - Case 2"
             else:
                 heights.append(h)
-                print "Height - Case Default"
 
 
         left_x = [int(cluster_centers[i][0] - widths[i]/2) for i in range(0,n_clusters)]
