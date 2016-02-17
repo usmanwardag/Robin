@@ -1,4 +1,5 @@
 
+import cv2
 from matplotlib import pyplot as plt
 import numpy as np
 
@@ -27,6 +28,7 @@ class ObjectClassification:
         self.startingPosY = startingPosY
         self.widths = widths
         self.heights = heights
+
         # Resize image maintaining the aspect ratio
         r = 400.0 / image.shape[1]
         self.image = self.resizeImage(self.image,400,int(self.image.shape[0] * r))
@@ -37,7 +39,7 @@ class ObjectClassification:
 
     def ClassifyAllObjects(self):
         objects = [self.classifyObject(self.startingPosY[i], self.startingPosY[i], self.widths[i],
-                                  self.heights[i]) for i in range(1,self.n)]
+                                  self.heights[i]) for i in range(0,self.n)]
 
     def classifyObject(self, PosX, PosY, width, height):
 
@@ -53,11 +55,13 @@ class ObjectClassification:
     def matchImage(self, refImage,threshold=2):
 
         sub_images = []
-        for i in range(1,len(self.widths)):
+        for i in range(0,len(self.widths)):
             start_x = self.startingPosX[i]
             start_y = self.startingPosY[i]
-            sub_images[i] = self.image[start_x:(start_x+1),start_y:(start_y+1)]
-
+            print start_x, start_x+self.widths[i]
+            print start_y, start_y+self.heights[i]
+            sub_images.append(self.image[start_x:(start_x+self.widths[i]),
+                              start_y:(start_y+self.heights[i])])
 
         #matchResults = [self.matchSURFDescriptors(subImage,refImage) for subImage in subImages]
         #print matchResults
@@ -72,9 +76,9 @@ class ObjectClassification:
         print self.widths
         print self.heights
 
-        for subImage in subImages:
-            print subImage.shape[0],subImage.shape[1]
-            plt.imshow(subImage)
+        for sub_image in sub_images:
+            print sub_image.shape[1],sub_image.shape[0]
+            plt.imshow(sub_image)
             plt.show()
 
     def matchSURFDescriptors(self, image, refImage, threshold = 2):

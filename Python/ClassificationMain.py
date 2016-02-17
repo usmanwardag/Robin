@@ -3,26 +3,34 @@ import os
 from os import path
 import sys
 import ObjectClassification as classification
-from matplotlib import pyplot
-import ObjectMapping
+from matplotlib import pyplot as plt
+import ObjectMapping as mapping
 
 sys.path.insert(0, path.abspath('..'))
 
 def main():
-    path_original = os.getcwd()+"\..\Data\imageMatching01.jpg"
-    path_ref = os.getcwd()+"\..\Data\imageMatching02.jpg"
+    path_original = os.getcwd()+"\Data\imageMatching03.jpg"
+    path_ref = os.getcwd()+"\Data\imageMatching02.jpg"
 
     image_original = plt.imread(path_original,0)
     image_ref = plt.imread(path_ref,0)
+    print "Done loading images"
 
-    object_mapping = ObjectMapping(originalImage)
+    object_mapping = mapping.ObjectMapping(image_original)
+    print "Created ObjectMapping object"
+
     object_mapping.mapObjects()
-    startingPosX, startingPosY, widths, heights = object_mapping.getObjects()
+    print "Done Mapping images"
 
-    #classificationObject = classification.ObjectClassification(originalImage, startingPosX,
-    #                                            startingPosY, widths, heights)
+    x_pos, y_pos, widths, heights = object_mapping.getObjects()
+    print "Loaded positions"
+    print "--------------------------------------------------------------------"
+    print "NOW IN CLASSIFICATION"
 
-    #classificationObject.matchImage(refImage)
+    object_classify = classification.ObjectClassification(image_original, x_pos, y_pos,
+                                                               widths, heights)
+
+    object_classify.matchImage(image_ref)
 
 
 if __name__ == '__main__':
