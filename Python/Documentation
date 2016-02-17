@@ -1,5 +1,47 @@
 
-The module implements classes & functions to map objects in an image.
+
+- ObjectClassification.py
+
+    INPUTS:
+    - An image representing a frame of a video.
+    - Number of objects identified.
+    - 4 lists that are output from ObjectMapping module and that represent the rectangles
+        around each object in image.
+
+    INTERMEDIATE PROCESS:
+    - The image is scaled to 400 by 400 pixels.
+    - Parents' object categories are classified to check if they are human, animal or a thing.
+    - Sub-Objects are classified to further classify humans, animals and things. (WILL BE
+        IMPLEMENTED AT A LATER STAGE).
+
+    FUNCTIONS:
+
+        map0bjects():
+            Inputs: None
+            Outputs: None
+            Process: Populates 4 lists containing information about rectangles and calculates
+                    value of 'n'. Main function that runs the algorithm responsible for
+                    detecting objects.
+
+        getNumberOfObjects():
+            Inputs: None
+            Outputs: Number of Objects identified in image
+            Process: None
+
+        getObjects:
+            Inputs: None
+            Outputs: 4 lists containing information about rectangles.
+            Process: None
+
+
+    ALGORITHMS:
+        - Bag of Words:
+            In order to detect whether we have a human, animal or object we can use Bag of Words
+            algorithm whose code can be found here. The algorithm makes use of LinearSVC and
+            other machine learning tools to determine the kind of object.
+            The Python implementation using sklearn and openCV can be found here:
+            https://github.com/bikz05/bag-of-words
+
 
 - ObjectMapping.py
 
