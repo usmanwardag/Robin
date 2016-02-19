@@ -56,7 +56,7 @@ class ObjectClassification:
     indicating if length of good matches exceeds threshold.
     '''
 
-    def matchSURFDescriptors(self, image, image_ref, threshold = 4):
+    def matchSURFDescriptors(self, image, image_ref, threshold = 2):
 
         # TRADE-OFF: Threshold can be adjusted to see where we get optimum value.
         surf = cv2.SURF(400)
@@ -76,7 +76,7 @@ class ObjectClassification:
                 good.append([m])
 
         # Draw matches
-        #print "Good Matches: ", len(good)
+        print "Good Matches: ", len(good)
 
         if len(good) >= threshold:
             return True

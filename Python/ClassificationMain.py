@@ -13,8 +13,8 @@ sys.dont_write_bytecode = True
 def main():
 
     start = time.time()
-    path_original = os.getcwd()+"\Data\imageMatching01.jpg"
-    path_ref = os.getcwd()+"\Data\imageMatching02.jpg"
+    path_original = os.getcwd()+"\Data\imageMatching17.jpg"
+    path_ref = os.getcwd()+"\Data\imageMatching16.jpg"
 
     image_original = plt.imread(path_original,0)
 
@@ -25,8 +25,8 @@ def main():
     image_resized = resizeImage(image_original,400,int(image_original.shape[0] * r))
 
     image_ref = plt.imread(path_ref,0)
-    r = 500.0 / image_ref.shape[1]
-    ref_resized = resizeImage(image_ref,400,int(image_ref.shape[0] * r))
+    r = 200.0 / image_ref.shape[1]
+    ref_resized = resizeImage(image_ref,200,int(image_ref.shape[0] * r))
 
 
 
