@@ -1,0 +1,98 @@
+
+Below is sample structure of output YAML file. This is a representation framework for SLAM containing
+objects and attributes in a string.
+
+____________________________________________________________________________________________________
+
+
+output:
+	
+	// Show results of all functions called
+	identify_objects:
+		// Identify if an object or a group of objects is present for a given number of frames in a video.
+
+		bottle:
+			detected = true	// whether or not object is detected
+			frames = [1,19,22] // all frames in which object appear
+			appear_time = 10 // time for which object appear
+			attributes = [color.yellow, texture.plastic]
+
+		chair:
+			detected = false
+
+	identify_attributes:
+		// Identify if an attribure or a group of attributes is present for a given number of frames in a video.
+
+		color.red:
+			detected = true
+			frames = [10,11]
+			appear_time = 13
+
+		shape.rectangle:
+			detected = false
+
+		texture.wooden:
+			detected = false
+
+	get_objects:
+		// Return all the objects found in video irrespective of whether or not it is specified
+		objects = [bottle, pen, table, human]
+
+	get_attributes:
+		// Return all the attributes found in video irrespective of whether or not it is specified
+		objects = [color.red, texture.plastic, color.yellow]
+
+	get_coordinates:
+		// Return coordinates of object of group of objects whenever they are spotted.
+
+		objects:
+			bottle:
+				coordinates = [(100,100,100,0.01),
+							(110,105,100,0.19),(100,105,107,0.22)] // contains x,y,z,t
+
+		attributes:
+			color.red:
+				coordinates = [(100,100,89,0.10),(100,105,90,0.11)] 
+
+
+	count_entities:
+		// Count all occurences of object in a video. Each second would be treated as one occurence.
+
+		objects:
+			bottle:
+				count = 3
+
+		attributes:
+			color.red:
+				count = 3
+
+
+	identify_motion:
+		// Prepare a trajectory of object's motion.
+
+		bottle:
+			detected = true
+			type = linear
+			coordinates = [(100,100,100,0.01),
+							(110,105,100,0.19),(100,105,107,0.22)] 
+
+
+	predict_motion:
+		// Based on an object's motion throughout the video, a trajectory will be created and this can be used to
+		// predict object's motion at any instance of time.	
+		
+		bottle:
+			type = linear
+			coordinates = [(110,100,100,0.60),
+							(100,105,100,0.70),(110,105,107,0.80)]
+
+	calculate_distances:
+		// Calculate distance of objects from camera source.
+
+		bottle:
+			distance = [125, 113, 122] // distance in cm
+
+
+test_results:
+	// If gui is true, no results will be shown here.
+	gui = true

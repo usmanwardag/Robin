@@ -1,0 +1,117 @@
+
+Below is sample structure of input YAML file. Since, there are numerous rich SLAMs that can be generated
+for a specific environment, the input YAML file specifes what kind of rich SLAM user requires.
+
+____________________________________________________________________________________________________
+
+sample.yaml:
+
+	properties:
+		// Define overall SLAM properties
+
+		frame_rate = 100 // specify frames / sec 
+		real_time = true // if SLAM should be updated in real time or once the video is processed
+		rich_slam = true // if user wants rich SLAM or ordinary SLAM
+		paths = "C://Usman/robot_video.wav" // specify video/image path(s) or camera source(s) (pre-defined path) 
+
+	objects:
+	
+		// Define objects to detect in SLAM mapping. If rich_slam = false, these are ignored
+		bottle:
+	
+			attributes = ['red','plastic']
+			time_interval: 10 // a minimum time for which object should appear in seconds 
+			
+		chair:
+	
+			// if attributes are not provided, then we use an algorithm to estimate an object's attributes
+			// using a knowledge graph
+
+	attributes:
+
+		// Define attributes to detect in SLAM mapping. If rich_slam = false, these are ignored
+		color.red
+		shape.rectangle
+		texture.wooden
+
+
+	main:
+
+		actions: 
+			identify_objects:
+				// Identify if an object or a group of objects is present for a given number of frames in a video.
+				all_frames: true // if set true, then a list of booleans will be returned
+
+			identify_attributes:
+				// Identify if an attribure or a group of attributes is present for a given number of frames in a video.
+
+			get_objects:
+				// Return all the objects found in video irrespective of whether or not it is specified
+
+			get_attributes:
+				// Return all the attributes found in video irrespective of whether or not it is specified
+
+			get_coordinates:
+				// Return coordinates of object of group of objects whenever they are spotted.
+				// Can specfify if coordinates of objects, attributes or both are required
+
+				objects = true
+				attributes = true
+
+
+			count_entities:
+				// Count all occurences of object in a video. Each second would be treated as one occurence.
+				// Can specfify if counts of objects, attributes or both are required
+
+				objects = true
+				attributes = true
+
+			identify_motion:
+				// Prepare a trajectory of object's motion.
+				trajectory_points = 3
+
+			predict_motion:
+				// Based on an object's motion throughout the video, a trajectory will be created and this can be used to
+				// predict object's motion at any instance of time.	
+
+				bottle:
+					start_point = 0.6
+					end_point = 0.8
+					tajectory_points = 3
+
+			calculate_distance:
+				// Calculate distance of objects from camera source.
+
+	save:
+		// After video has been completely processed, save results.
+		// By DEFAULT, results will be stored in YAML but user can select other mediums as well.
+
+			medium: CSV 
+
+	test:
+		// Allow user to run tests to understand how the script works and how accurate it is.
+		// Supposed to be a walk-through tutorial.
+
+			test_path: // Provide a list of test paths
+			gui: true // By default, command line interface will be enabled.
+			tutorial: true // If enabled, this will guide user through the complete process
+
+script.py:
+	import robin
+
+	// Read the sample.yaml file
+
+	robin.add_object()
+	robin.remove_object()
+	robin.add_action()
+	robin.remove_action()
+	robin.modify_action()
+	robin.add_medium() 
+	robin.remove_medium()
+	robin.set_properties() // pass in a list (ALL properties MUST be provided)
+	
+
+
+
+		
+
