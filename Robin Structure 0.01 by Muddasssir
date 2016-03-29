@@ -1,0 +1,69 @@
+YAML Main Script:
+Triggers:
+	- Detect: Detect Somthing Cool
+	  ActionScript: Do Something Cool
+	- Detect: Detect Something Else Cool
+	  ActionScript: Do Somthing Else Cool
+
+
+
+
+
+YAML Vision Script: Detect Somthing Cool
+
+- Attributes:
+	- Blue
+	- Wooden
+	- Liquid
+	- Metal
+
+- Objects:
+	- Ball
+	- Chair
+	- muddassir235
+	- usmanwardag
+
+- Sensors:
+    - Temperature: condition
+    - Voltage: Condition
+    .
+    .
+    .
+    .
+
+
+
+
+
+
+YAML Control Script: Do Somthing Cool
+	- Do some cool step
+	- Do another cool step
+	- Grab Something Cool
+	.
+	.
+	.
+	.
+	.
+
+
+
+
+
+
+TestScript:
+
+define new_object: Glass
+	- Paths of source images:
+		- path/subpath
+		- path2/subpath2
+		- path3/subpath3
+		.
+		.
+		.
+
+	- Attributes to detect:
+		- Blue
+		- liquid
+		- glassy
+		- round
